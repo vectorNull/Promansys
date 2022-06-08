@@ -1,6 +1,7 @@
-import Header from './components/Header';
-import Clients from './components/Clients';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import Header from "./components/Header";
+import Clients from "./components/Clients";
+import AddClientModal from "./components/AddClientModal";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 // removes error message from console
 const cache = new InMemoryCache({
@@ -10,22 +11,22 @@ const cache = new InMemoryCache({
         clients: {
           merge(existing, incoming) {
             return incoming;
-          }
+          },
         },
         projects: {
           merge(existing, incoming) {
             return incoming;
-          }
-        }
-      }
-    }
-  }
+          },
+        },
+      },
+    },
+  },
 });
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
-  cache
-})
+  uri: "http://localhost:5000/graphql",
+  cache,
+});
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <ApolloProvider client={client}>
         <Header />
         <div className="container">
+          <AddClientModal />
           <Clients />
         </div>
       </ApolloProvider>
