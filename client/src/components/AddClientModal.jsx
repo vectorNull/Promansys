@@ -49,7 +49,7 @@ export default function AddClientModal() {
       <div
         className="modal fade"
         id="addClientModal"
-        aria-labelledby="addClientModal"
+        aria-labelledby="addClientModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog">
